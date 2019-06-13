@@ -1,0 +1,24 @@
+להוסיף קטע קוד זה בסוף ה
+body
+ בדף הבית שלכם
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
+    authDomain: "hw4-telhai-web-2019.firebaseapp.com",
+    databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
+    projectId: "hw4-telhai-web-2019",
+    storageBucket: "hw4-telhai-web-2019.appspot.com",
+    messagingSenderId: "771152219948",
+    appId: "1:771152219948:web:55ecd8ccc4530f52"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
