@@ -22,27 +22,42 @@
   <center>
     <div id="main-div">
       <img src="1.jpg" id="image" alt="">
-
-      <p id="log">התחברות לאתר</p>
-      <div class="input-group input-group-sm mb-3 mt-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+      <div id="LogInDiv" style="display: none">
+        <p id="log">התחברות לאתר</p>
+        <div class="input-group input-group-sm mb-3 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          </div>
+          <input type="text" id="emailInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
         </div>
-        <input type="text" id="emailInput" class="form-control" aria-label="Small"
-          aria-describedby="inputGroup-sizing-sm">
-      </div>
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          </div>
+          <input type="password" id="passwordInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
         </div>
-        <input type="password" id="passwordInput" class="form-control" aria-label="Small"
-          aria-describedby="inputGroup-sizing-sm">
-      </div>
-      <p id="LogMsg" class="text-center font-weight-bold" style="color: brown"></p>
-      <div class="row mt-4">
-        <button id="loginButton" type="submit" class="mx-auto btn mybtn btn-block btn-info">Login!</button>
-        <button id="SignUpButton" type="submit" class="mx-auto btn mybtn btn-block btn-primary">Register!</button>
+        <p id="LogMsg" class="text-center font-weight-bold" style="color: brown"></p>
+        <div class="row mt-4">
+          <button id="loginButton" type="submit" class="mx-auto btn mybtn btn-block btn-info">Login!</button>
+          <button id="SignUpButton" type="submit" class="mx-auto btn mybtn btn-block btn-primary">Register!</button>
 
+        </div>
+      </div>
+
+      <div id="choosePic" style="display: none">
+        <p class="row mt-2" id="log">ללא תמונה לא תוכל להמשיך לשלב הבא:)</p>
+        <img class="row mt-2" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" id="avatar"
+          alt="example placeholder avatar">
+        <div class="row custom-file mt-2">
+          <input type="file" class="custom-file-input" id="inputFile" accept="image/jpeg">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+        <p id="FailMsg" class=" text-center font-weight-bold" style="color: brown"></p>
+
+        <button id="UploadPicBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-primary mt-2">רוצה להמשיך לשלב
+          הבא</button>
       </div>
     </div>
   </center>
@@ -70,6 +85,8 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+    
   </script>
   <script src="script.js"></script>
 </body>

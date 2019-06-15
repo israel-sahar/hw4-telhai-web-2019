@@ -11,6 +11,48 @@ function changeImg() {
 
 
 $(document).ready(function () {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        // User is logged in
+        if(photoURL==null)
+        {
+            $('#LogInDiv').hide()
+            $('#choosePic').show()
+        }
+        else
+        {
+            location.href=".."
+        }
+        } else {
+            $('#LogInDiv').show() 
+        }
+        });
+
+        $('#UploadPicBtn').click(function() {
+            console.log($('#inputFile').prop('files'))
+            $('#FailMsg').text("")
+            if($('#inputFile').prop('files').length==0||(!$('#inputFile').prop('files')[0].name.includes("jpg")&&!$('#inputFile').prop('files')[0].name.includes("png")))
+            {
+                $('#FailMsg').text("אנא בחר תמונה מסוג JPG.")
+            }
+            else
+            {
+                var storageRef = firebase.storage().ref("userimages/" + new Date().getTime() + ".jpg");
+                storageRef.put($('#inputFile').prop('files')[0])
+            }
+        })
+        
+
+$("#inputFile").change(function () {
+    $(".custom-file-label").text($('#inputFile').prop('files')[0].name.slice(0,25))
+});
     setInterval(changeImg,3000)
     $('#loginButton').click(function () {
         $('#LogMsg').text('')
@@ -44,27 +86,6 @@ $(document).ready(function () {
             });
         }
     }
-
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-        // User is logged in
-        if(photoURL==null)
-        {
-            location.href=".."
-        }
-        else
-        {
-            location.href=".."
-        }
-        } else {
-             
-        }
-        });
 })
+
+
