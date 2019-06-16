@@ -29,7 +29,7 @@ $(document).ready(function () {
             $('#LogInDiv').show()
         }
     });
-
+    $('#main_div').show()
 
     $('#UploadPicBtn').click(function () {
         $('#FailMsg').text("")
@@ -49,7 +49,7 @@ $(document).ready(function () {
                     user.updateProfile({
                         photoURL: url
                     }).then(function () {
-                        location.reload();
+                        location.href='../next'
                     }).catch(function (error) {
                         // An error happened.
                     });
