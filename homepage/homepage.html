@@ -47,7 +47,8 @@
       </div>
 
       <div id="choosePic" style="display: none">
-        <p class="row mt-2" id="log">ללא תמונה לא תוכל להמשיך לשלב הבא:)</p>
+        <p class=" mt-2" id="shalomMsg"></p>
+        <p class="mt-2" >:)ללא תמונה לא תוכל להמשיך לשלב הבא</p>
         <img class="row mt-2" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" id="avatar"
           alt="example placeholder avatar">
         <div class="row custom-file mt-2">
@@ -58,6 +59,8 @@
 
         <button id="UploadPicBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-primary mt-2">רוצה להמשיך לשלב
           הבא</button>
+
+          <button id="LogOutBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-danger mt-2">אני רוצה לצאת מהחשבון</button>
       </div>
     </div>
   </center>
@@ -65,28 +68,22 @@
 
 
 
-
-
-  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
 
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
-      authDomain: "hw4-telhai-web-2019.firebaseapp.com",
-      databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
-      projectId: "hw4-telhai-web-2019",
-      storageBucket: "hw4-telhai-web-2019.appspot.com",
-      messagingSenderId: "771152219948",
-      appId: "1:771152219948:web:d5a5177e2acbed08"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
+    authDomain: "hw4-telhai-web-2019.firebaseapp.com",
+    databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
+    projectId: "hw4-telhai-web-2019",
+    storageBucket: "hw4-telhai-web-2019.appspot.com",
+    messagingSenderId: "771152219948",
+    appId: "1:771152219948:web:d5a5177e2acbed08"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
-    
   </script>
   <script src="script.js"></script>
 </body>
