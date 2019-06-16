@@ -20,10 +20,12 @@
 
 <body>
   <center>
-    <div id="main-div" style="display: none">
+    <div id="main-div">
       <img src="1.jpg" id="image" alt="">
+
+      <p id="log">התחברות/הרשמה לאתר</p>
+      <!--LOG IN DIV START-->
       <div id="LogInDiv" style="display: none">
-        <p id="log">התחברות לאתר</p>
         <div class="input-group input-group-sm mb-3 mt-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
@@ -39,16 +41,78 @@
             aria-describedby="inputGroup-sizing-sm">
         </div>
         <p id="LogMsg" class="text-center font-weight-bold" style="color: brown"></p>
-        <div class="row mt-4">
-          <button id="loginButton" type="submit" class="mx-auto btn mybtn btn-block btn-info">Login!</button>
-          <button id="SignUpButton" type="submit" class="mx-auto btn mybtn btn-block btn-primary">Register!</button>
-
-        </div>
       </div>
+      <!--LOG IN DIV END-->
 
+      <!--SIGN UP DIV START-->
+      <div id="SignUpDiv" style="display:none;">
+        <div class="input-group input-group-sm mb-3 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">שם פרטי</span>
+          </div>
+          <input type="text" id="firstNameInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+
+        <div class="input-group input-group-sm mb-3 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">שם משפחה</span>
+          </div>
+          <input type="text" id="familyNameInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+
+        <div class="input-group input-group-sm mb-3 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          </div>
+          <input type="text" id="emailSignUpInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          </div>
+          <input type="password" id="passwordSignUpInput" class="form-control" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <p id="SignUpMsg" class="text-center font-weight-bold" style="color: brown"></p>
+      </div>
+      <!--SIGN UP DIV END-->
+
+          <!--Forgot Password DIV START-->
+          <div id="PasswordResetDiv" style="display:none;">
+            <span class="" id="inputGroup-sizing-sm">:ציין אימייל לשחזור הסיסמא</span>
+            <div class="input-group input-group-sm mb-3 mt-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+              </div>
+              <input type="text" id="emailResetInput" class="form-control" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <p id="ResetMsg" class="text-center font-weight-bold" style="color: brown"></p>
+            <button id="SendResetBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-danger mt-2">לחץ לשליחת אימייל
+              </button>
+          </div>
+              <!--Forgot Password DIV END-->
+
+
+      <!--CHOOSE IF SIGNUP OR LOGIN-->
+      <div id="chooseSection">
+        <div class="row mt-4">
+          <button id="loginButton" type="submit" class="mx-auto btn mybtn btn-block btn-info hide2 hide3">Login!</button>
+          <button id="SignUpButton" type="submit" class="mx-auto btn mybtn btn-block btn-primary hide1 hide3">Register!</button>
+        </div>
+        <button id="ResetButton" type="submit" class="mx-auto btn mybtn btn-block btn-link hide2 hide3" style="direction: rtl ">שכחת סיסמא?</button>
+        <br>
+        <a href="file:///C:/Users/sahar/Desktop/HW-WEB/hw4-telhai-web-2019/homepage/homepage.html" style="direction: rtl">.חזור לדף הראשי</a>
+      </div>
+      <!--CHOOSE PICTURE DIV START-->
       <div id="choosePic" style="display: none">
         <p class=" mt-2" id="shalomMsg"></p>
-        <p class="mt-2" >:)ללא תמונה לא תוכל להמשיך לשלב הבא</p>
+        <p class="mt-2">:)ללא תמונה לא תוכל להמשיך לשלב הבא</p>
         <img class="row mt-2" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" id="avatar"
           alt="example placeholder avatar">
         <div class="row custom-file mt-2">
@@ -57,32 +121,37 @@
         </div>
         <p id="FailMsg" class=" text-center font-weight-bold" style="color: brown"></p>
 
-        <button id="UploadPicBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-primary mt-2">רוצה להמשיך לשלב
+        <button id="UploadPicBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-primary mt-2">רוצה להמשיך
+          לשלב
           הבא</button>
 
-          <button id="LogOutBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-danger mt-2">אני רוצה לצאת מהחשבון</button>
+        <button id="LogOutBtn" type="submit" class="row mx-auto btn mybtn btn-block btn-danger mt-2">אני רוצה לצאת
+          מהחשבון</button>
       </div>
+      <!--CHOOSE PICTURE DIV END-->
+
+    
     </div>
   </center>
 
 
 
 
-<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
 
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-    apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
-    authDomain: "hw4-telhai-web-2019.firebaseapp.com",
-    databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
-    projectId: "hw4-telhai-web-2019",
-    storageBucket: "hw4-telhai-web-2019.appspot.com",
-    messagingSenderId: "771152219948",
-    appId: "1:771152219948:web:d5a5177e2acbed08"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+      apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
+      authDomain: "hw4-telhai-web-2019.firebaseapp.com",
+      databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
+      projectId: "hw4-telhai-web-2019",
+      storageBucket: "hw4-telhai-web-2019.appspot.com",
+      messagingSenderId: "771152219948",
+      appId: "1:771152219948:web:d5a5177e2acbed08"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
   </script>
   <script src="script.js"></script>

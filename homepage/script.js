@@ -18,18 +18,17 @@ $(document).ready(function () {
             var providerData = user.providerData;
             // User is logged in
             if (photoURL == null) {
-                $('#shalomMsg').html("<b>" + user.email + "</b>" + "  ,שלום")
+                $('#shalomMsg').html("<b>" + user.displayName + "</b>" + "  ,שלום")
                 $('#LogInDiv').hide()
+                $('#chooseSection').hide()
                 $('#choosePic').show()
             }
             else {
                 location.href = "../nextLevel"
             }
         } else {
-            $('#LogInDiv').show()
         }
     });
-    $('#main_div').show()
 
     $('#UploadPicBtn').click(function () {
         $('#FailMsg').text("")
@@ -49,7 +48,7 @@ $(document).ready(function () {
                     user.updateProfile({
                         photoURL: url
                     }).then(function () {
-                        location.href='../next'
+                        location.href = '../next'
                     }).catch(function (error) {
                         // An error happened.
                     });
@@ -76,38 +75,87 @@ $(document).ready(function () {
         $(".custom-file-label").text($('#inputFile').prop('files')[0].name.slice(0, 25))
     });
     setInterval(changeImg, 3000)
-    $('#loginButton').click(function () {
-        $('#LogMsg').text('')
-        loginRegistertosite("login")
 
+
+    $('#loginButton').click(function () {
+        if ($('#LogInDiv').css('display') == 'none') {
+            $('#LogInDiv').slideToggle()
+            $('.hide1').hide()
+            return
+        }
+
+        $('#LogMsg').text('')
+        firebase.auth().signInWithEmailAndPassword($('#emailInput').val(), $('#passwordInput').val()).catch(function (error) {
+            var errorCode = error.code
+            var errorMsg = error.message
+            $('#LogMsg').text("ההתחברות נכשלה, אנא נסה שנית")
+        });
+
+    })
+
+    $('#ResetButton').click(function (params) {
+        if ($('#PasswordResetDiv').css('display') == 'none') {
+            $('#PasswordResetDiv').slideToggle();
+            $('.hide3').hide();
+            $('#LogInDiv').hide()
+
+        }
+    })
+
+    $('#SendResetBtn').click(function (params) {
+        var auth = firebase.auth();
+        var emailAddress = $('#emailResetInput').val();
+        $('#ResetMsg').text('')
+        auth.sendPasswordResetEmail(emailAddress).then(function () {
+            $('#ResetMsg').text("אימייל לאיפוס נשלח בהצלחה.")
+
+        }).catch(function (error) {
+            $('#ResetMsg').text("האיפוס נכשל, תבדוק את האימייל שהזנת")
+            return
+        });
     })
 
     $('#SignUpButton').click(function () {
-        $('#LogMsg').text('')
-        loginRegistertosite("register")
+        if ($('#SignUpDiv').css('display') == 'none') {
+            $('#SignUpDiv').slideToggle()
+            $('.hide2').hide()
+            return
+        }
+        $('#SignUpMsg').text('')
+        if ($('#firstNameInput').val() == '') {
+            $('#SignUpMsg').text("ההרשמה נכשלה, אנא מלא שם פרטי")
+            return
+        }
+        if ($('#familyNameInput').val() == '') {
+            $('#SignUpMsg').text("ההרשמה נכשלה, אנא מלא שם משפחה")
+            return
+        }
+
+        firebase.auth().createUserWithEmailAndPassword($('#emailSignUpInput').val(), $('#passwordSignUpInput').val()).then(function (params) {
+            $('#SignUpDiv').slideToggle()
+            var user = firebase.auth().currentUser;
+            console.log(user)
+            user.updateProfile({
+                displayName: $('#firstNameInput').val() + " " + $('#familyNameInput').val()
+            }).then(function () {
+                $('#shalomMsg').html("<b>" + user.displayName + "</b>" + "  ,שלום")
+                $('#LogInDiv').hide()
+                $('#chooseSection').hide()
+                $('#choosePic').show()
+            }).catch(function (error) {
+                // An error happened.
+            });
+
+        }).catch(function (error) {
+            var errorCode = error.code
+            var errorMsg = error.message
+            $('#SignUpMsg').text("ההרשמה נכשלה, אנא נסה שנית")
+        });
+
 
     })
 
 
-
-    function loginRegistertosite(state) {
-
-        if (state == "login") {
-            firebase.auth().signInWithEmailAndPassword($('#emailInput').val(), $('#passwordInput').val()).catch(function (error) {
-                var errorCode = error.code
-                var errorMsg = error.message
-                $('#LogMsg').text("ההתחברות נכשלה, אנא נסה שנית")
-
-            });
-        }
-        else {
-            firebase.auth().createUserWithEmailAndPassword($('#emailInput').val(), $('#passwordInput').val()).catch(function (error) {
-                var errorCode = error.code
-                var errorMsg = error.message
-                $('#LogMsg').text("ההרשמה נכשלה, אנא נסה שנית")
-            });
-        }
-    }
 })
 
 
