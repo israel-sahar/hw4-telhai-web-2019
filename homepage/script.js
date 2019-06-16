@@ -23,14 +23,14 @@ $(document).ready(function () {
                 $('#choosePic').show()
             }
             else {
-                location.href = ".."
+                location.href = "../nextLevel"
             }
         } else {
             $('#LogInDiv').show()
         }
     });
-    
-    
+
+
     $('#UploadPicBtn').click(function () {
         $('#FailMsg').text("")
         if ($('#inputFile').prop('files').length == 0 || (!$('#inputFile').prop('files')[0].name.includes("jpg") && !$('#inputFile').prop('files')[0].name.includes("jpeg"))) {
@@ -39,30 +39,35 @@ $(document).ready(function () {
         else {
             var storageRef = firebase.storage().ref();
             var name = storageRef.child("userimages/" + new Date().getTime() + ".jpg");
-            
+
             $('#FailMsg').text("..אנא המתן")
 
             name.put($('#inputFile').prop('files')[0]).then(function (snap) {
-                name.getDownloadURL().then(function(url){
-                      var user=firebase.auth().currentUser;
-                      user.updateProfile({
+                $('#FailMsg').text("..עוד רגע")
+                name.getDownloadURL().then(function (url) {
+                    var user = firebase.auth().currentUser;
+                    user.updateProfile({
                         photoURL: url
-                      })
-                      location.reload();
-                     
-                    }).catch(function(err){ console.log(err); });
+                    }).then(function () {
+                        location.reload();
+                    }).catch(function (error) {
+                        // An error happened.
+                    });
 
-            }).catch(function(err){console.log(err);});
+
+                }).catch(function (err) { console.log(err); });
+
+            }).catch(function (err) { console.log(err); });
         }
     })
 
     $('#LogOutBtn').click(function () {
-        firebase.auth().signOut().then(function() {
+        firebase.auth().signOut().then(function () {
             // Sign-out successful.
             location.reload();
-          }, function(error) {
+        }, function (error) {
             // An error happened.
-          });
+        });
     })
 
 
