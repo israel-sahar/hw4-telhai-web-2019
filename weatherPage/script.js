@@ -4,7 +4,7 @@ $(document).ready(function(){
     btn1.addEventListener('click',testF);
 
     function testF(){
-        var url = 'http://api.openweathermap.org/data/2.5/weather?q=jerusalem&APPID=2701402a9ecce075487661e2fa72c91b';
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=a302b19b4c3d869060bdaea73d8dbd9f';
         requestAJAX(url);
     }
 
