@@ -85,4 +85,15 @@ $(document).ready(function(){
         localStorage.setItem('selectedCity', cityName.value);
     }
 
+    
+    $('#b3').click(function () {
+        firebase.auth().signOut().then(function () {
+            // Sign-out successful.
+            location.reload();
+            location.href = '../homepage/homepage.html'
+        }, function (error) {
+            // An error happened.
+        });
+    })
+
 });
