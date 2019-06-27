@@ -2,16 +2,19 @@
 $(document).ready(function(){
     var userPhoto;
     var username;
+    var dataWriter
     firebase.auth().onAuthStateChanged(function (user) {
             userPhoto = user.photoURL;
             username = user.displayName;
+            console.log(username);
+            dataWriter= document.getElementById("userName");
+            dataWriter.innerHTML = username;
     });
     var btn1 = document.getElementById('b1');
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click',testF);
     btn1.addEventListener('click',storeCity);
-    var dataWriter = document.getElementById("userName");
-    dataWriter.innerHTML = username;
+     
 
     function testF(){
         if(cityName.value =="")
