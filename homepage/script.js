@@ -24,7 +24,7 @@ $(document).ready(function () {
                 $('#choosePic').show()
             }
             else {
-                location.href = "../nextLevel"
+                location.href = '../weatherPage/WeatherPage.html'
             }
         } else {
         }
@@ -48,7 +48,7 @@ $(document).ready(function () {
                     user.updateProfile({
                         photoURL: url
                     }).then(function () {
-                        location.href = '../next'
+                        location.href = '../weatherPage/WeatherPage.html'
                     }).catch(function (error) {
                         // An error happened.
                     });
