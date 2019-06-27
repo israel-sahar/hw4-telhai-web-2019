@@ -3,6 +3,7 @@ $(document).ready(function(){
     var btn1 = document.getElementById('b1');
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click',testF);
+    btn1.addEventListener('click',storeCity);
 
     function testF(){
         if(cityName.value =="")
@@ -13,7 +14,7 @@ $(document).ready(function(){
         requestAJAX(url,function(data)
         {            
             console.log(data);
-            console.log(data.list[0].main.temp);
+
             //write dates
             var dataWriter = document.getElementById("date1");
             dataWriter.innerHTML ='Date: '+data.list[0].dt_txt;
@@ -27,28 +28,33 @@ $(document).ready(function(){
             dataWriter.innerHTML = 'Date: '+data.list[32].dt_txt;
 
             //write weather
+            var imgPath = data.list[0].weather[0].icon+".png";
             dataWriter = document.getElementById("weather1");
-            dataWriter.innerHTML = 'Weather: '+data.list[0].weather[0].description+'<img src="01d.png">';
+            dataWriter.innerHTML = 'Weather : '+data.list[0].weather[0].description+'<img src='+imgPath+'>';
+            imgPath = data.list[8].weather[0].icon+".png";
             dataWriter = document.getElementById("weather2");
-            dataWriter.innerHTML = 'Weather: '+data.list[8].weather[0].description;
+            dataWriter.innerHTML = 'Weather : '+data.list[8].weather[0].description+'<img src='+imgPath+'>';
+            imgPath = data.list[16].weather[0].icon+".png";
             dataWriter = document.getElementById("weather3");
-            dataWriter.innerHTML = 'Weather: '+data.list[16].weather[0].description;
+            dataWriter.innerHTML = 'Weather : '+data.list[16].weather[0].description+'<img src='+imgPath+'>';
+            imgPath = data.list[24].weather[0].icon+".png";
             dataWriter = document.getElementById("weather4");
-            dataWriter.innerHTML = 'Weather: '+data.list[24].weather[0].description;
+            dataWriter.innerHTML = 'Weather : '+data.list[24].weather[0].description+'<img src='+imgPath+'>';
+            imgPath = data.list[32].weather[0].icon+".png";
             dataWriter = document.getElementById("weather5");
-            dataWriter.innerHTML = 'Weather: '+data.list[32].weather[0].description;
+            dataWriter.innerHTML = 'Weather : '+data.list[32].weather[0].description+'<img src='+imgPath+'>';
 
             //write temperature
             dataWriter = document.getElementById("temper1");
-            dataWriter.innerHTML = 'Weather: '+data.list[0].main.temp;
+            dataWriter.innerHTML = 'Temperature: '+data.list[0].main.temp;
             dataWriter = document.getElementById("temper2");
-            dataWriter.innerHTML = 'Weather: '+data.list[8].main.temp;
+            dataWriter.innerHTML = 'Temperature: '+data.list[8].main.temp;
             dataWriter = document.getElementById("temper3");
-            dataWriter.innerHTML = 'Weather: '+data.list[16].main.temp;
+            dataWriter.innerHTML = 'Temperature: '+data.list[16].main.temp;
             dataWriter = document.getElementById("temper4");
-            dataWriter.innerHTML = 'Weather: '+data.list[24].main.temp;
+            dataWriter.innerHTML = 'Temperature: '+data.list[24].main.temp;
             dataWriter = document.getElementById("temper5");
-            dataWriter.innerHTML = 'Weather: '+data.list[32].main.temp;
+            dataWriter.innerHTML = 'Temperature: '+data.list[32].main.temp;
         });
         }
     }
@@ -62,6 +68,10 @@ $(document).ready(function(){
 
         xhr.open('GET',url,true);
         xhr.send();
+    }
+
+    function storeCity(){
+        localStorage.setItem('selectedCity', cityName.value);
     }
 
 });
