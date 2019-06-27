@@ -1,9 +1,17 @@
 
 $(document).ready(function(){
+    var userPhoto;
+    var username;
+    firebase.auth().onAuthStateChanged(function (user) {
+            userPhoto = user.photoURL;
+            username = user.displayName;
+    });
     var btn1 = document.getElementById('b1');
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click',testF);
     btn1.addEventListener('click',storeCity);
+    var dataWriter = document.getElementById("userName");
+    dataWriter.innerHTML = username;
 
     function testF(){
         if(cityName.value =="")
@@ -16,7 +24,7 @@ $(document).ready(function(){
             console.log(data);
 
             //write dates
-            var dataWriter = document.getElementById("date1");
+            dataWriter = document.getElementById("date1");
             dataWriter.innerHTML ='Date: '+data.list[0].dt_txt;
             dataWriter = document.getElementById("date2");
             dataWriter.innerHTML = 'Date: '+data.list[8].dt_txt;

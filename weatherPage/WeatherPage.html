@@ -25,13 +25,20 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-1"> </div>
+            <div class="col-sm-1" id="lMargin1">
+                <div>
+                    You are loged in as:
+                </div>
+                <div id="userName">
+
+                </div>
+             </div>
             <div class="col-sm-2" style="background-color:aquamarine" id="date1"> </div>
             <div class="col-sm-2" style="background-color:honeydew" id="date2"> </div>
             <div class="col-sm-2" style="background-color: aquamarine" id="date3"> </div>
             <div class="col-sm-2" style="background-color: honeydew" id="date4"> </div>
             <div class="col-sm-2" style="background-color: aquamarine" id="date5"> </div>
-            <div class="col-sm-1"> </div>
+            <div class="col-sm-1" id="rMargin1"> </div>
         </div>
 
         <div class="row">
@@ -69,17 +76,25 @@
 
         </div>
 
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
+            authDomain: "hw4-telhai-web-2019.firebaseapp.com",
+            databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
+            projectId: "hw4-telhai-web-2019",
+            storageBucket: "hw4-telhai-web-2019.appspot.com",
+            messagingSenderId: "771152219948",
+            appId: "1:771152219948:web:d5a5177e2acbed08"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+      
+        </script>
 
         <script src="script.js"></script>
-
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#reserved-urls -->
-
-        <!-- Initialize Firebase -->
-        <script src="/__/firebase/init.js"></script>
     </center>
 </body>
 
