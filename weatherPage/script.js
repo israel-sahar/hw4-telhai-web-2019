@@ -13,7 +13,6 @@ $(document).ready(function(){
             dataWriter.innerHTML = '<img src="'+userPhoto+'">';
             dataWriter = document.getElementById('topUserName')
             dataWriter.innerHTML = "Hello "+username; 
-            //dataWriter.innerHTML = username;
     });
     
     var btn1 = document.getElementById('b1');
