@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -16,6 +17,13 @@
 
 <body style="background-color: cornflowerblue">
     <center>
+                
+            <div class="topnav" id="topNav">
+                    <a class="active" href="#home" id="logOut">Log Out</a>
+                    <p id="topUserName"></p>
+                    <div id="userImg"></div>
+                  </div>
+                  
         Weather Forcast
         <div>
             choose a city:
@@ -25,20 +33,13 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-1" id="lMargin1">
-                <div>
-                    You are loged in as:
-                </div>
-                <div id="userName">
-
-                </div>
-             </div>
+            <div class="col-sm-1" id="lMargin1"> </div>
             <div class="col-sm-2" style="background-color:aquamarine" id="date1"> </div>
             <div class="col-sm-2" style="background-color:honeydew" id="date2"> </div>
             <div class="col-sm-2" style="background-color: aquamarine" id="date3"> </div>
             <div class="col-sm-2" style="background-color: honeydew" id="date4"> </div>
             <div class="col-sm-2" style="background-color: aquamarine" id="date5"> </div>
-            <div class="col-sm-1" id="rMargin1"> </div>
+            <div class="col-sm-1" id="rMargin1"> </div> 
         </div>
 
         <div class="row">
@@ -70,10 +71,6 @@
             <div class="col-sm-2" style="background-color: honeydew" id="temper4"> </div>
             <div class="col-sm-2" style="background-color: aquamarine" id="temper5"> </div>
             <div class="col-sm-1"> </div>
-        </div>
-
-        <div>
-                <button id="b3">log out</button>
         </div>
 
         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
