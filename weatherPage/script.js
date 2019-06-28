@@ -3,13 +3,18 @@ $(document).ready(function(){
     var userPhoto;
     var username;
     var dataWriter
+    
     firebase.auth().onAuthStateChanged(function (user) {
             userPhoto = user.photoURL;
             username = user.displayName;
             console.log(username);
-            dataWriter= document.getElementById("userName");
-            dataWriter.innerHTML = username;
+            console.log(userPhoto);
+            dataWriter = document.getElementById('userImg');
+            dataWriter.innerHTML = '<img src="'+userPhoto+'">';
+            dataWriter = document.getElementById('topUserName')
+            dataWriter.innerHTML = "Hello "+username; 
     });
+    
     var btn1 = document.getElementById('b1');
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click',testF);
@@ -85,8 +90,7 @@ $(document).ready(function(){
         localStorage.setItem('selectedCity', cityName.value);
     }
 
-    
-    $('#b3').click(function () {
+    $('#logOut').click(function () {
         firebase.auth().signOut().then(function () {
             // Sign-out successful.
             location.reload();
