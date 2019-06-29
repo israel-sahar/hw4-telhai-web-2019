@@ -18,8 +18,12 @@ $(document).ready(function () {
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click', testF);
 
+
+    })
+
     $('#b2').click(function () {
-        if(this.nameFlag == -1)
+        console.log(nameFlag);
+        if(nameFlag == -1)
         {
             console.log(this.nameFlag);
             $('#errorMsg').html('You must submit an existing city');
@@ -28,14 +32,14 @@ $(document).ready(function () {
         localStorage.setItem('selectedCity', cityName.value);
 
         });
-    })
 
 
     function testF() {
         $('#errorMsg').empty();
         if (cityName.value == "")
         {
-            this.nameFlag == -1;
+            console.log(window.nameFlag);
+            snameFlag == -1;
             $('#errorMsg').html('You must enter a name');
         }
         else {
@@ -44,7 +48,8 @@ $(document).ready(function () {
                 url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&units=metric&APPID=a302b19b4c3d869060bdaea73d8dbd9f',
                 type: 'GET',
                 success: function (data) {
-                    this.nameFlag = 1;
+                    console.log(nameFlag);
+                    nameFlag = 1;
 
                     //write dates
                     dataWriter = document.getElementById("date1");
@@ -90,7 +95,7 @@ $(document).ready(function () {
                 },
                 error: function (err) {
                     console.log('error');
-                    this.nameFlag = -1;
+                    nameFlag = -1;
                     $('#errorMsg').html('City not found');
                 }
             });
