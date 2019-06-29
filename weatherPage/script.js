@@ -22,14 +22,17 @@ $(document).ready(function () {
     })
 
     $('#b2').click(function () {
-        console.log(nameFlag);
+       /* console.log(nameFlag);
         if(nameFlag == -1)
         {
             console.log(this.nameFlag);
             $('#errorMsg').html('You must submit an existing city');
         }
         else
+        { */
         localStorage.setItem('selectedCity', cityName.value);
+        location.href = '../Vacation_dates_confimation/vacation_dates.html'
+        //}
 
         });
 
@@ -38,7 +41,7 @@ $(document).ready(function () {
         $('#errorMsg').empty();
         if (cityName.value == "")
         {
-            console.log(window.nameFlag);
+            //console.log(nameFlag);
             snameFlag == -1;
             $('#errorMsg').html('You must enter a name');
         }
@@ -48,8 +51,8 @@ $(document).ready(function () {
                 url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&units=metric&APPID=a302b19b4c3d869060bdaea73d8dbd9f',
                 type: 'GET',
                 success: function (data) {
-                    console.log(nameFlag);
-                    nameFlag = 1;
+                   // console.log(nameFlag);
+                   // nameFlag = 1;
 
                     //write dates
                     dataWriter = document.getElementById("date1");
@@ -95,7 +98,7 @@ $(document).ready(function () {
                 },
                 error: function (err) {
                     console.log('error');
-                    nameFlag = -1;
+                   // nameFlag = -1;
                     $('#errorMsg').html('City not found');
                 }
             });
