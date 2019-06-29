@@ -37,3 +37,8 @@
   width: 55px;
 
 }
+
+#errorMsg {
+color: red;
+background-color: white
+}

@@ -17,13 +17,13 @@
 
 <body style="background-color: cornflowerblue">
     <center>
-                
-            <div class="topnav" id="topNav">
-                    <a class="active" href="#home" id="logOut">Log Out</a>
-                    <p id="topUserName"></p>
-                    <div id="userImg"></div>
-                  </div>
-                  
+
+        <div class="topnav" id="topNav">
+            <a class="active" href="#home" id="logOut">Log Out</a>
+            <p id="topUserName"></p>
+            <div id="userImg"></div>
+        </div>
+
         Weather Forcast
         <div>
             choose a city:
@@ -32,63 +32,70 @@
             <button id="b2">submit</button>
         </div>
 
-        <div class="row">
-            <div class="col-sm-1" id="lMargin1"> </div>
-            <div class="col-sm-2" style="background-color:aquamarine" id="date1"> </div>
-            <div class="col-sm-2" style="background-color:honeydew" id="date2"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="date3"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="date4"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="date5"> </div>
-            <div class="col-sm-1" id="rMargin1"> </div> 
+        <div id="table">
+
+            <div class="row">
+                <div class="col-sm-1" id="lMargin1"> </div>
+                <div class="col-sm-2" style="background-color:aquamarine" id="date1"> </div>
+                <div class="col-sm-2" style="background-color:honeydew" id="date2"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="date3"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="date4"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="date5"> </div>
+                <div class="col-sm-1" id="rMargin1"> </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weather1"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="weather2"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weather3"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="weather4"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weather5"> </div>
+                <div class="col-sm-1"> </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-1"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weathericon1"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="weathericon2"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weathericon3"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="weathericon4"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="weathericon5"> </div>
+                <div class="col-sm-1"> </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="temper1"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="temper2"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="temper3"> </div>
+                <div class="col-sm-2" style="background-color: honeydew" id="temper4"> </div>
+                <div class="col-sm-2" style="background-color: aquamarine" id="temper5"> </div>
+                <div class="col-sm-1"> </div>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-1"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weather1"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="weather2"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weather3"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="weather4"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weather5"> </div>
-            <div class="col-sm-1"> </div>
-        </div>
+        <div class="col-sm-4" id="errorMsg">
 
-
-        <div class="row">
-            <div class="col-sm-1"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weathericon1"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="weathericon2"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weathericon3"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="weathericon4"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="weathericon5"> </div>
-            <div class="col-sm-1"> </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-1"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="temper1"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="temper2"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="temper3"> </div>
-            <div class="col-sm-2" style="background-color: honeydew" id="temper4"> </div>
-            <div class="col-sm-2" style="background-color: aquamarine" id="temper5"> </div>
-            <div class="col-sm-1"> </div>
         </div>
 
         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
 
         <script>
-          // Your web app's Firebase configuration
-          var firebaseConfig = {
-            apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
-            authDomain: "hw4-telhai-web-2019.firebaseapp.com",
-            databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
-            projectId: "hw4-telhai-web-2019",
-            storageBucket: "hw4-telhai-web-2019.appspot.com",
-            messagingSenderId: "771152219948",
-            appId: "1:771152219948:web:d5a5177e2acbed08"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-      
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBkbEmo7mt98YNQHjJ_QEFJgDzwe56UOxY",
+                authDomain: "hw4-telhai-web-2019.firebaseapp.com",
+                databaseURL: "https://hw4-telhai-web-2019.firebaseio.com",
+                projectId: "hw4-telhai-web-2019",
+                storageBucket: "hw4-telhai-web-2019.appspot.com",
+                messagingSenderId: "771152219948",
+                appId: "1:771152219948:web:d5a5177e2acbed08"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
         </script>
 
         <script src="script.js"></script>
