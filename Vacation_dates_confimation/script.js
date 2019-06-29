@@ -1,20 +1,24 @@
+$(document).ready(function(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            email = user.email;
+            console.log(email)
+            
+        } else {
+            location.href = "../homepage/homepage.html";
+        }
+    });
+
+
+})
 
 
 
-
-
+/***************************************************************** */
 $(document).ready(function () {
     var email;
+    console.log(localStorage.getItem('selectedCity'))
 var vacationArr = [];
-firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-              email = user.email;
-              console.log(email)
-              
-          } else {
-              location.href = "../homepage/homepage.html";
-          }
-      });
 
       $("#signOut").click(function(){
 

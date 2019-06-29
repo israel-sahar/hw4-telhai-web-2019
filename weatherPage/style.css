@@ -42,3 +42,11 @@
 color: red;
 background-color: white
 }
+
+body{
+  background-image: url("../Vacation_dates_confimation/white-beach.jpeg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+}
