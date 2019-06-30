@@ -20,46 +20,30 @@
         <div id="userImg"></div>
     </div>
         
-    <div >
-        <div class="page-header">
-            <h1>Vacation dates:</h1>
-            <input id="startDate" type="date"/>
-            <input id="endDate" type="date"/>
-            
-          <!--  <ul id="dates" class="list-group">-->
-            
-            </ul>
-            <div class="container"><p>  </p></div>
-            <div class="container" >
-            <button class="btn btn-primary" id="saveDate">Check the vacation date</button>
+    <center>
+        <div >
+            <div class="page-header">
+                <h1>Vacation dates:</h1>
+                <div class='row'>              
+                  <input id="startDate" type="date"/>
+                  <input id="endDate" type="date"/>
+                </div>
+                <div class="row">
+                    <p id="FaildMsg" class="text-center font-weight-bold" style="color: brown"></p>
+                </div>
+                <br>
+                <div class="row">
+                    <button class="btn btn-primary" id="saveDate">Check the vacation date</button>
+                </div>
+              </center>
+
+                <!--add list of dates..-->
+                <h3 class="" id="titled"></h3>
+                <div id="listDates"></div>
+    
         </div>
-
-
-
-
-
-    </div>
-
-<!-- here comes the dates input-->
-
-
-    <div class="bg-1 hidden" >
-        <div class="container">
-          <h3 class="text-center">YOUR DATES</h3>
-          <p class="text-center">Here is your eligiable Vacation dates:<br> Remember to book your tickets!</p>
-      
-          <ul id="dates" class="list-group hidden">
-            <li class="list-group-item">אחלה בחלה</li>
-            <li class="list-group-item">October Sold Out!</li>
-            <li class="list-group-item">November 3</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div>
-    </div>
-
-
+    
+    <!-- here comes the dates input-->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
 
 <script>

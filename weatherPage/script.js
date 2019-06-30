@@ -1,17 +1,18 @@
 
 $(document).ready(function () {
-    var userPhoto;
-    var username;
-    var dataWriter;
     localStorage.removeItem( 'selectedCity' ); 
 
     firebase.auth().onAuthStateChanged(function (user) {
-        userPhoto = user.photoURL;
-        username = user.displayName;
-        dataWriter = document.getElementById('userImg');
+        if(user){
+        var userPhoto = user.photoURL;
+        var username = user.displayName;
+        var dataWriter = document.getElementById('userImg');
         dataWriter.innerHTML = '<img src="' + userPhoto + '">';
         dataWriter = document.getElementById('topUserName')
         dataWriter.innerHTML = "Hello " + username;
+        }else{
+            location.href = '../homepage/homepage.html'
+        }
     });
 
     var btn1 = document.getElementById('b1');
