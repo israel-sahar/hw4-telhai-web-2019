@@ -43,7 +43,7 @@ function testF() {
     else {
 
         $.ajax({
-            url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&units=metric&APPID=a302b19b4c3d869060bdaea73d8dbd9f',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&units=metric&APPID=a302b19b4c3d869060bdaea73d8dbd9f',
             type: 'GET',
             success: function (data) {
                 // console.log(nameFlag);
