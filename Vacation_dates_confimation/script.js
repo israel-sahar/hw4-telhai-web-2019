@@ -28,7 +28,7 @@ $(document).ready(function () {
                         'carRental': childSnapshot.val()['carRental']
                     }
                 });
-                console.log(vacationArr)
+                
                 printArray()
 
             });
@@ -42,7 +42,7 @@ $(document).ready(function () {
         vacationArr.sort(function(a,b){
             return a['sDate'].getTime()>b['sDate'].getTime()
         })
-        console.log(vacationArr)
+        
         vacationArr.forEach(function (unit) {
             $("#dates").append('<li class="list-group-item">'
                 + unit['sDate'].toLocaleDateString() + " - " + unit['eDate'].toLocaleDateString() + " in  " + unit['CityName'] + ";  " + "    rent a car? - " + unit['carRental']
@@ -121,7 +121,7 @@ $(document).ready(function () {
                 if(newDate['eDate']<vacationArr[i]['sDate']) return true;
             }
             if (i + 1 == vacationArr.length) {
-                console.log()
+                
                 if (vacationArr[i]['eDate'] < newDate['sDate']) return true;
             }
             else {
