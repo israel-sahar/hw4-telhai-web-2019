@@ -1,6 +1,8 @@
+
+
 .topnav {
   overflow: hidden;
-  background-color:darkblue;
+  background-color:#daa592;
 }
 
 .topnav a {
@@ -10,25 +12,28 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+
 }
 
 .topnav a:hover {
   background-color: #ddd;
-  color: black;
+  color: #fbd1b7;
 }
 
 .topnav a.active {
-  background-color: black;
-  color: white;
+  background-color: #3871bb;
+  color: rgb(230, 230, 230);
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .topnav p {
   float: left;
-  color: #f2f2f2;
+  color: rgb(230, 230, 230);
   text-align: center;
   padding: 4px 20px;
   text-decoration: none;
   font-size: 17px;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .topnav img {
@@ -50,4 +55,14 @@ body{
   background-size: 100vw 100vh;
   background-attachment: fixed;
   font-family: 'Fjalla One', sans-serif;
+
+}
+#jambo{
+  
+  background-color: #3871bb21;
+  font-family: 'Fjalla One', sans-serif;
+
+}
+#cityName{
+  width: 25%;
 }
