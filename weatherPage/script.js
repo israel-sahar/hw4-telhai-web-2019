@@ -1,7 +1,6 @@
 
 $(document).ready(function () {
     localStorage.removeItem( 'selectedCity' ); 
-
     firebase.auth().onAuthStateChanged(function (user) {
         if(user){
         var userPhoto = user.photoURL;
@@ -9,12 +8,11 @@ $(document).ready(function () {
         var dataWriter = document.getElementById('userImg');
         dataWriter.innerHTML = '<img src="' + userPhoto + '">';
         dataWriter = document.getElementById('topUserName')
-        dataWriter.innerHTML = "Hello " + username;
+        dataWriter.innerHTML = "Hello, " + username;
         }else{
-            location.href = '../homepage/homepage.html'
+          location.href = '../homepage/homepage.html'
         }
     });
-
     var btn1 = document.getElementById('b1');
     var cityName = document.getElementById('cityName');
     btn1.addEventListener('click', testF);

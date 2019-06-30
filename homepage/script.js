@@ -7,17 +7,11 @@ function changeImg() {
 }
 
 $(document).ready(function () {
+    setInterval(changeImg, 3000)
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
             // User is logged in
-            if (photoURL == null) {
+            if (user.photoURL == null) {
                 $('#shalomMsg').html("<b>" + user.displayName + "</b>" + "  ,שלום")
                 $('#LogInDiv').hide()
                 $('#chooseSection').hide()
@@ -69,13 +63,10 @@ $(document).ready(function () {
         });
     })
 
-
     $("#inputFile").change(function (e) {
 
         $(".custom-file-label").text($('#inputFile').prop('files')[0].name.slice(0, 25))
     });
-    setInterval(changeImg, 3000)
-
 
     $('#loginButton').click(function () {
         if ($('#LogInDiv').css('display') == 'none') {
@@ -83,12 +74,10 @@ $(document).ready(function () {
             $('.hide1').hide()
             return
         }
-
         $('#LogMsg').text('')
         firebase.auth().signInWithEmailAndPassword($('#emailInput').val(), $('#passwordInput').val()).catch(function (error) {
-            var errorCode = error.code
-            var errorMsg = error.message
             $('#LogMsg').text("ההתחברות נכשלה, אנא נסה שנית")
+            return
         });
 
     })
@@ -103,10 +92,9 @@ $(document).ready(function () {
     })
 
     $('#SendResetBtn').click(function (params) {
-        var auth = firebase.auth();
         var emailAddress = $('#emailResetInput').val();
         $('#ResetMsg').text('')
-        auth.sendPasswordResetEmail(emailAddress).then(function () {
+        firebase.auth().sendPasswordResetEmail(emailAddress).then(function () {
             $('#ResetMsg').text("אימייל לאיפוס נשלח בהצלחה.")
 
         }).catch(function (error) {
@@ -134,7 +122,6 @@ $(document).ready(function () {
         firebase.auth().createUserWithEmailAndPassword($('#emailSignUpInput').val(), $('#passwordSignUpInput').val()).then(function (params) {
             $('#SignUpDiv').slideToggle()
             var user = firebase.auth().currentUser;
-            console.log(user)
             user.updateProfile({
                 displayName: $('#firstNameInput').val() + " " + $('#familyNameInput').val()
             }).then(function () {
