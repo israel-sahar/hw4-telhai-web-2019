@@ -6,3 +6,21 @@ body{
     background-attachment: fixed;
     font-family: 'Fjalla One', sans-serif;
 }
+#datesList{
+
+    visibility:visible;
+}
+
+#btncar {
+    margin-bottom: 15px;
+
+}
+#yes/no{
+    position: relative;
+    left: 50%;
+
+}
+#pagi{
+    margin-top: 5px;
+
+}
