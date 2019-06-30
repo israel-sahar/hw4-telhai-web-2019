@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if(user){
+            console.log(user)
         var userPhoto = user.photoURL;
         var username = user.displayName;
         var dataWriter = document.getElementById('userImg');
@@ -11,7 +12,8 @@ $(document).ready(function () {
         dataWriter = document.getElementById('topUserName')
         dataWriter.innerHTML = "Hello " + username;
         }else{
-            location.href = '../homepage/homepage.html'
+            console.log(user)
+          //  location.href = '../homepage/homepage.html'
         }
     });
 
