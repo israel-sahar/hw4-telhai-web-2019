@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    localStorage.setItem("carRental","no");
-    localStorage.setItem("hotelStars","5");
+    localStorage.setItem("carRental","no");  //the defult
+    localStorage.setItem("hotelStars","5");  //the defult
     console.log(localStorage.getItem("carRental"));
     
     var userID
