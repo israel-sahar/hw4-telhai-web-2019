@@ -24,7 +24,6 @@ $(document).ready(function () {
 
 $('#b2').click(function () {
     var name = localStorage.getItem('selectedCity');
-    console.log(name);
     if (name != null) {
         location.href = '../Vacation_dates_confimation/vacation_dates.html'
     }
@@ -46,8 +45,7 @@ function testF() {
             url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&units=metric&APPID=a302b19b4c3d869060bdaea73d8dbd9f',
             type: 'GET',
             success: function (data) {
-                // console.log(nameFlag);
-                // nameFlag = 1;
+
                 localStorage.setItem('selectedCity', cityName.value);
 
                 //write dates
@@ -95,7 +93,6 @@ function testF() {
             },
             error: function (err) {
                 console.log('error');
-                // nameFlag = -1;
                 $('#errorMsg').html('City not found');
             }
         });
