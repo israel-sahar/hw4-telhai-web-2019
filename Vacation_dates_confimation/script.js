@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    localStorage.setItem("carRental","no");
+    localStorage.setItem("hotelStars","5");
+    console.log(localStorage.getItem("carRental"));
+    
     var userID
     var test
     var vacationArr = [];
@@ -9,23 +13,47 @@ $(document).ready(function(){
             test.once('value').then(function(snapshot) {
                 if(snapshot.val()==null)
                 {
-                    $('#titled').html('Your list is empty.');
-                }      
-                var i=0          
+                    $('#dateslist').css('visibility','hidden');
+                }  
+                   
+                 
+                var i=0        
+                let howManyPrints = datesCounter; 
                 snapshot.forEach(function(childSnapshot) {
-                    
+                   
+                    let childData = childSnapshot.val();
                     vacationArr[i++]={'cityname':childSnapshot.val()['CityName'],
                                       'sDate':childSnapshot.val()['sDate'],
-                                      'eDate':childSnapshot.val()['eDate']}
+                                      'eDate':childSnapshot.val()['eDate'],
+                                    'carRental': childSnapshot.val()['carRental'],
+                                    'hotelStars': childSnapshot.val()['hotelStars']}
+
+                     $("#dates").append('<li class="list-group-item">' 
+                   + childSnapshot.val()['sDate'] + ", " + childSnapshot.val()['eDate'] + " in - "+ childSnapshot.val()['CityName'] +";" +"    rent a car? - "+ childSnapshot.val()['carRental'] 
+                    +";    Hotel stars- "+ childSnapshot.val()['hotelStars'] + '</li>');
+                     howManyPrints--;
+                     if(howManyPrints==0){
+                        return true; 
+                     }
+                     
                  });
-                 console.log(vacationArr);});
+                 
+                 console.log(vacationArr);
+                });
         $('#userImg').html('<img src="' + user.photoURL + '">')
         $('#topUserName').text("Hello, " + user.displayName)
+
+
+
+
         }else{
             location.href = '../homepage/homepage.html'
         }
+
     });
     
+
+
     $("#logOut").click(function(){
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
@@ -36,38 +64,43 @@ $(document).ready(function(){
       });
 
 
-   
-   
-   
-   
-   
-   
-         /*datesRef.on('value', function(data){
-        dates = [];
-        //$("#dates").empty();
-        data.forEach(function(childSnapshot) {
-            let childData = childSnapshot.val();
-            dates.push(childData.startDate);
-            dates.push(childData.endDate);
+   $("#YES").click(function() {
+       localStorage.setItem("carRental","yes");
+       console.log(localStorage.getItem("carRental"));
+         
+   })
 
-            $("#dates").append('<li class="list-group-item">' 
-                + childData.startDate + ", " + childData.endDate
-            + '</li>');
+$("#1star").click(function() {
+    localStorage.setItem("hotelStars","1");  
+})
 
-          });
-    });*/
-              
+$("#2star").click(function() {
+    localStorage.setItem("hotelStars","2");  
+})
+$("#3star").click(function() {
+    localStorage.setItem("hotelStars","3");  
+})
+$("#4star").click(function() {
+    localStorage.setItem("hotelStars","4");  
+})
+
+
+
+   
+  
+      var datesCounter=0;       //for showing the correct amount of dates in the list
+
     $("#saveDate").click(function(){
         $('#FaildMsg').text("")
         s=new Date($("#startDate").val())
         e=new Date($("#endDate").val())
         if(s=="Invalid Date"||e=="Invalid Date"){
-            $('#FaildMsg').text("שגיאה, יש להזין תאריכים תקינים")
+            $('#FaildMsg').text("Erorr! please enter a valid date")
             return;
         }
         else{
             if(s>e){
-                $('#FaildMsg').text("לא נראה לי, יש להזין תאריכים תקינים")
+                $('#FaildMsg').text("Erorr! please enter a valid date")
                 return;  
             }
             else{
@@ -75,29 +108,15 @@ $(document).ready(function(){
                 node.set({
                 CityName: localStorage.getItem("selectedCity"),
                 eDate: e.toLocaleDateString(),
-                sDate: s.toLocaleDateString()});
+                sDate: s.toLocaleDateString(),
+                carRental: localStorage.getItem("carRental"),
+                hotelStars: localStorage.getItem("hotelStars")
 
-                //check if overlaps
-        /*datesRef.child(userP).push().set({
-            startDate: sDate,
-            endDate: eDate,
-            cityName: localStorage.getItem("selectedCity"),
-            //howManyHotelStars: 5
-        });*/
+            });
+                datesCounter++;
+
             }
                     
         }
     });
 })
-
-
-        /*dates.push(sDate);
-        dates.push(eDate);
-        
-        dates = dates.sort();
-        let sIndex = dates.indexOf(sDate);
-        let eIndex = dates.indexOf(eDate);
-        if(sIndex != eIndex - 1){
-            alert("nine!! nine nine nine!!");
-            return;
-        }*/
