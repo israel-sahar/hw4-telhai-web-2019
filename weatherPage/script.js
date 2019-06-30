@@ -92,7 +92,6 @@ function testF() {
 
             },
             error: function (err) {
-                console.log('error');
                 $('#errorMsg').html('City not found');
             }
         });
@@ -105,7 +104,6 @@ function requestAJAX(url, callback) {
     xhr.addEventListener("error", transferFailed);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(JSON.parse(xhr.responseText));
             callback(JSON.parse(xhr.responseText));
         }
     }
@@ -116,7 +114,6 @@ function requestAJAX(url, callback) {
 }
 
 function storeCity(nameFlag) {
-    console.log(nameFlag);
     if (nameFlag == false) {
         $('#errorMsg').html('You must submit an existing city');
     }
@@ -127,7 +124,6 @@ function storeCity(nameFlag) {
 $('#logOut').click(function () {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
-        location.reload();
         location.href = '../homepage/homepage.html'
     }, function (error) {
         // An error happened.
