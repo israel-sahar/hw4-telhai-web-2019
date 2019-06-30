@@ -13,9 +13,10 @@ $(document).ready(function(){
             test.once('value').then(function(snapshot) {
                 if(snapshot.val()==null)
                 {
-                    $('#dateslist').css('visibility','hidden');
+                    $('#noDates').text("You didnt registed dates yet!");
+                    return;
                 }  
-                   
+                $('#noDates').text(" ");
                  
                 var i=0        
                 let howManyPrints = datesCounter; 
@@ -29,7 +30,7 @@ $(document).ready(function(){
                                     'hotelStars': childSnapshot.val()['hotelStars']}
 
                      $("#dates").append('<li class="list-group-item">' 
-                   + childSnapshot.val()['sDate'] + ", " + childSnapshot.val()['eDate'] + " in - "+ childSnapshot.val()['CityName'] +";" +"    rent a car? - "+ childSnapshot.val()['carRental'] 
+                   + childSnapshot.val()['sDate'] + " - " + childSnapshot.val()['eDate'] + " in  "+ childSnapshot.val()['CityName'] +";  " +"    rent a car? - "+ childSnapshot.val()['carRental'] 
                     +";    Hotel stars- "+ childSnapshot.val()['hotelStars'] + '</li>');
                      howManyPrints--;
                      if(howManyPrints==0){
@@ -104,7 +105,9 @@ $("#4star").click(function() {
                 return;  
             }
             else{
+               
                 var node = test.push();
+                datesCounter++;
                 node.set({
                 CityName: localStorage.getItem("selectedCity"),
                 eDate: e.toLocaleDateString(),
@@ -113,7 +116,7 @@ $("#4star").click(function() {
                 hotelStars: localStorage.getItem("hotelStars")
 
             });
-                datesCounter++;
+               
 
             }
                     
